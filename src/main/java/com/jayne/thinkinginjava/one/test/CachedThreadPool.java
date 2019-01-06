@@ -1,6 +1,6 @@
-package com.jayne.thinkinginjava.test;
+package com.jayne.thinkinginjava.one.test;
 
-import com.jayne.thinkinginjava.LiftOff;
+import com.jayne.thinkinginjava.one.LiftOff;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

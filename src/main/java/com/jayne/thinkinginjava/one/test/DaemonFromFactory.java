@@ -1,13 +1,15 @@
-package com.jayne.thinkinginjava;
+package com.jayne.thinkinginjava.one.test;
 
+import com.jayne.thinkinginjava.one.DaemonThreadFactory;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 后台线程
- *
  * Created by Jayne on 2019/1/5.
  */
-public class SimpleDaemons implements Runnable {
+public class DaemonFromFactory implements Runnable {
 
     public void run() {
         while (true){
@@ -21,10 +23,9 @@ public class SimpleDaemons implements Runnable {
     }
 
     public static void main(String[] args) throws Exception{
+        ExecutorService executorService = Executors.newCachedThreadPool(new DaemonThreadFactory());
         for(int i = 0; i < 10; i++){
-            Thread thread = new Thread(new SimpleDaemons());
-            thread.setDaemon(true);
-            thread.start();
+            executorService.execute(new DaemonFromFactory());
         }
         System.out.println("All daemons started");
         TimeUnit.MILLISECONDS.sleep(220);
